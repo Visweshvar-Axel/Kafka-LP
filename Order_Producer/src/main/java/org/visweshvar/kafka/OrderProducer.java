@@ -16,10 +16,12 @@ public class OrderProducer {
         KafkaProducer<String, Integer> producer = new KafkaProducer<>(props);
         ProducerRecord<String, Integer> record = new ProducerRecord<>("OrderTopic", "TUF A14 gaming laptop" ,10);
         try {
-            // Synchronous call
-            RecordMetadata recordMetadata = producer.send(record).get();
-            System.out.println(recordMetadata.partition());
-            System.out.println(recordMetadata.offset());
+            // Asynchronous call
+            producer.send(record,new OrderCallBack());
+//            // Synchronous call
+//            RecordMetadata recordMetadata = producer.send(record).get();
+//            System.out.println(recordMetadata.partition());
+//            System.out.println(recordMetadata.offset());
 //            // alt enter for action
 //            // future metadata
 //            Future<RecordMetadata> send = producer.send(record);
