@@ -15,7 +15,7 @@ public class OrderProducer {
         props.setProperty("value.serializer","org.visweshvar.kafka.customseriaizers.OrderSerializer");
 
         KafkaProducer<String, Order> producer = new KafkaProducer<>(props);
-        ProducerRecord<String, Order> record = new ProducerRecord<>("OrderCSTopic", "TUF A14 gaming laptop" ,new Order("Visweshvar","ASUS A15",5));
+        ProducerRecord<String, Order> record = new ProducerRecord<>("OrderCSTopic", "Visweshvar" ,new Order("Visweshvar","ASUS A15",5));
         try {
             producer.send(record);
             System.out.println("Message sent successfully");
